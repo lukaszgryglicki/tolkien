@@ -1,0 +1,11 @@
+# build output
+/target/
+# generated data blobs (85 MB; rebuilt with datagen, see README "Regenerating the data")
+/data/
+# raw research material: Wiktionary/Eldamo dumps and intermediate pipeline output
+/research/
+# local secrets
+*.secret
+# python
+__pycache__/
+*.pyc

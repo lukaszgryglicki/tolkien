@@ -1,0 +1,83 @@
+tolkien - offline any-language -> Quenya translator
+Copyright 2026 Lukasz Gryglicki
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product bundles data derived from third-party sources and links
+third-party Rust crates. Their notices follow.
+
+--------------------------------------------------------------------------
+Eldamo - An Elvish Lexicon
+--------------------------------------------------------------------------
+The Quenya and Sindarin vocabulary embedded in the binary (data/quenya.bin,
+data/sindarin.bin and the Elvish side of data/lex.*) is derived from
+eldamo-data.xml, version 0.8.13, https://eldamo.org
+
+  (c) 2008 - 2026, Paul Strack.
+  This work is licensed under the Creative Commons Attribution 4.0
+  International License (CC BY 4.0),
+  http://creativecommons.org/licenses/by/4.0/
+
+Changes: entries were extracted with tools/eldamo_extract.py, filtered to
+Neo-Quenya / Neo-Sindarin words, reduced to (word, gloss, part of speech,
+stem, inflection notes) tuples and re-encoded into the binary formats
+defined in crates/tkdata.
+
+--------------------------------------------------------------------------
+Wiktionary (via wiktextract / kaikki.org)
+--------------------------------------------------------------------------
+The multilingual lexicon (all non-English languages -> English lemma
+mappings, English lemma inventory, part-of-speech tag sets, function-word
+lists, language name tables) embedded in data/lex.*, data/en.*,
+data/en_keys.*, data/lists.*, data/tagsets.bin, data/erank.bin and
+data/langs.bin is derived from the English Wiktionary
+(https://en.wiktionary.org) as machine-readable JSON produced by the
+wiktextract project and published at https://kaikki.org
+(raw-wiktextract-data.jsonl).
+
+  Wiktionary text is available under the Creative Commons
+  Attribution-ShareAlike 3.0 Unported License (CC BY-SA 3.0),
+  https://creativecommons.org/licenses/by-sa/3.0/
+  and the GNU Free Documentation License.
+
+  wiktextract: Copyright (c) 2018-2024 Tatu Ylonen, MIT License.
+
+Changes: glosses were parsed into head lemmas (tools/kaikki_*.py,
+tools/glossparse.py), ranked, deduplicated and re-encoded into the binary
+formats defined in crates/tkdata. The derived data files are therefore
+also made available under CC BY-SA 3.0.
+
+--------------------------------------------------------------------------
+Rust crates (statically linked into the binary)
+--------------------------------------------------------------------------
+whatlang                MIT                       Sergey Potapov (greyblake)
+fst                     Unlicense / MIT           Andrew Gallant
+unicode-segmentation    MIT / Apache-2.0          The unicode-rs developers
+unicode-normalization   MIT / Apache-2.0          The unicode-rs developers
+tinyvec                 Zlib / Apache-2.0 / MIT   Lokathor
+zstd                    MIT                       Alexandre Bury
+zstd-safe, zstd-sys     BSD-3-Clause              Alexandre Bury
+  bundling libzstd      BSD-3-Clause / GPL-2.0    Meta Platforms, Inc. and affiliates
+hashbrown               MIT / Apache-2.0          Amanieu d'Antras
+ahash                   MIT / Apache-2.0          Tom Kaitchuck
+memchr                  Unlicense / MIT           Andrew Gallant
+libc                    MIT / Apache-2.0          The Rust Project Developers
+cfg-if, once_cell,
+  getrandom,
+  allocator-api2        MIT / Apache-2.0
+zerocopy                BSD-2-Clause / Apache-2.0 / MIT
+
+Build-time only (not linked into the shipped binary): serde, serde_json,
+serde_derive, syn, quote, proc-macro2, unicode-ident, itoa, zmij, cc,
+pkg-config, jobserver, shlex, version_check, find-msvc-tools, r-efi
+(all MIT and/or Apache-2.0).
+
+--------------------------------------------------------------------------
+Trademarks
+--------------------------------------------------------------------------
+"Quenya", "Sindarin", "Tengwar", "The Silmarillion" and the names of
+Tolkien's languages and works are the intellectual property of the Tolkien
+Estate. This is a non-commercial fan project for the study of the invented
+languages; it is not endorsed by or affiliated with the Tolkien Estate or
+Middle-earth Enterprises. The Tengwar output uses the ConScript Unicode
+Registry (CSUR) Private Use Area assignment U+E000-U+E07F.

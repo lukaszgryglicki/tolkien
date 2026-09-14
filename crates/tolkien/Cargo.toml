@@ -1,0 +1,18 @@
+[package]
+name = "tolkien"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Offline stdin->stdout translator from any language into Tolkien's Quenya (and Sindarin)"
+publish = false
+
+[[bin]]
+name = "tolkien"
+path = "src/main.rs"
+
+[dependencies]
+fst = "0.4"
+whatlang = "0.16"
+unicode-segmentation = "1"
+unicode-normalization = "0.1"
+tkdata = { path = "../tkdata" }

@@ -1,0 +1,11 @@
+[package]
+name = "tkdata"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+description = "Shared binary data formats for the tolkien translator"
+
+[dependencies]
+unicode-normalization = "0.1"
+zstd = { version = "0.13", default-features = false }

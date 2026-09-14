@@ -1,0 +1,12 @@
+# Static linking for the FreeBSD host target. Build with:
+#   cargo build --release --target x86_64-unknown-freebsd -p tolkien
+# (using an explicit --target keeps build scripts/proc-macros dynamically linked, which
+# avoids the static build-script SIGSEGV seen on FreeBSD)
+[target.x86_64-unknown-freebsd]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[target.x86_64-unknown-linux-musl]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[target.x86_64-unknown-linux-gnu]
+rustflags = ["-C", "target-feature=+crt-static"]
