@@ -96,16 +96,26 @@ Helge Fauskanger's Quenya course conventions.
 ## Building
 
 Prerequisites: Rust ≥ 1.75 and the generated data blobs in `data/`
-(see *Regenerating the data*; they are not part of the git repository).
+(`*.bin`, ~85 MB, embedded with `include_bytes!`). They are not part of the
+git repository — either regenerate them (see *Regenerating the data*) or
+copy the `data/` directory from a machine that has them.
 
 ```
+# static binary (what tolkien-freebsd-amd64 is): an explicit --target keeps
+# build scripts dynamically linked while +crt-static applies to the tool
 cargo build --release --target x86_64-unknown-freebsd -p tolkien   # FreeBSD
-cargo build --release -p tolkien                                    # Linux/macOS
+cargo build --release --target x86_64-unknown-linux-musl -p tolkien # Linux
+# → target/<triple>/release/tolkien
+
+# ordinary dynamically linked host binary (RUSTFLAGS="" overrides the
+# +crt-static flag from .cargo/config.toml)
+RUSTFLAGS="" cargo build --release -p tolkien
+# → target/release/tolkien
 ```
 
-The binary is `target/<triple>/release/tolkien` (~100 MB, most of it the
-compressed dictionaries). A prebuilt, stripped FreeBSD/amd64 binary is
-committed as `tolkien-freebsd-amd64` (Git LFS).
+Either binary is ~100 MB, most of it the compressed dictionaries, and needs
+no files at run time. A prebuilt, stripped FreeBSD/amd64 static binary is
+committed as `tolkien-freebsd-amd64` (Git LFS; `git lfs pull` after cloning).
 
 Tests: `cargo test --release --target <triple> -p tolkien` (unit tests) and
 `tests/regress/run.sh` (golden translations for en/de/es/fr/pl/ru/zh/ja/ko).
