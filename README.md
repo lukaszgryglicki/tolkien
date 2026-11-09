@@ -188,7 +188,7 @@ takes 0.15 s; a 20 000-line Polish novel about 6 s.
 
 ## Licenses
 
-The code is licensed under the Apache License 2.0 (see `LICENSE`).
+The code is licensed under the GNU Affero General Public License v3.0 only (AGPL-3.0-only; see `LICENSE`).
 The embedded data is derived from Eldamo (© Paul Strack, CC BY 4.0) and
 from Wiktionary (CC BY-SA 3.0); see `NOTICE` for the attribution and the
 licenses of the Rust dependencies.

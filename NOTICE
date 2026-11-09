@@ -1,7 +1,7 @@
 tolkien - offline any-language -> Quenya translator
 Copyright 2026 Lukasz Gryglicki
 
-Licensed under the Apache License, Version 2.0 (see LICENSE).
+Licensed under the GNU Affero General Public License v3.0 only (AGPL-3.0-only; see LICENSE).
 
 This product bundles data derived from third-party sources and links
 third-party Rust crates. Their notices follow.
